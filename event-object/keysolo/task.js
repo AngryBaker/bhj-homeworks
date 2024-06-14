@@ -20,10 +20,9 @@ class Game {
     document.addEventListener("keyup", (event) => {
       let currentSymbol = this.currentSymbol.textContent.toLowerCase();
       if (event.key.toLowerCase() === currentSymbol) {
-        console.log(event.key);
-        return this.success();
+        this.success();
       } else {
-       return this.fail();
+        this.fail();
       };   
     } )
     
