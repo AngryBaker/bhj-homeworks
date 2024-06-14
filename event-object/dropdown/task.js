@@ -4,7 +4,7 @@ let dropList = document.getElementsByClassName("dropdown__list")[0];
 dropBtn.addEventListener("click", dropClick);
 
 function dropClick() {
-  dropList.classList.add("dropdown__list_active");
+  dropList.classList.toggle("dropdown__list_active");
 };
 
 let dropdown = document.getElementsByClassName("dropdown")[0];
