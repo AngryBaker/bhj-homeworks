@@ -69,7 +69,7 @@ document.body.addEventListener("click", toolOpener);
 function toolChanger() {
     for ( let elem of hasTooltip) {
         if (elem.classList.contains("tooltip_active")) {
-            elem.classList.toggle("tooltip_active")
+            elem.remove();
         }
     };
 };
