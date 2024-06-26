@@ -2,7 +2,6 @@ let todo = document.getElementsByClassName("card")[0];
 let input = document.getElementsByClassName("tasks__input")[0];
 let tasksList = document.getElementById("tasks__list");
 let returnTasksList = JSON.parse(localStorage.getItem("notesList"));
-console.log(returnTasksList);
 todoRestorer();
 
 function todoRestorer() {
