@@ -1,15 +1,35 @@
 let todo = document.getElementsByClassName("card")[0];
 let input = document.getElementsByClassName("tasks__input")[0];
 let tasksList = document.getElementById("tasks__list");
-let returnTasksList = JSON.parse(localStorage.getItem("myList"));
+let returnTasksList = JSON.parse(localStorage.getItem("notesList"));
 console.log(returnTasksList);
-tasksList.innerHTML = returnTasksList;
+todoRestorer();
+
+function todoRestorer() {
+    let cachedTasks = [];
+    for (const elem of returnTasksList) {
+        tasksList.insertAdjacentHTML('beforeend', `
+<div class="task">
+  <div class="task__title">
+    ${elem}
+  </div>
+  <a href="#" class="task__remove">&times;</a>
+</div>
+`);
+    }
+};
 
 function todoLocalizator() {
-    let serialTasksList = JSON.stringify(tasksList.innerHTML);
-    localStorage.setItem("myList", serialTasksList);
+    let cachedTasks = [];
+    for (const elem of tasksList.children) {
+        cachedTasks.push(elem.getElementsByClassName("task__title")[0].textContent);
+    }
+    console.log(cachedTasks);
+    let serialTasksList = JSON.stringify(cachedTasks);
+    localStorage.setItem("notesList", serialTasksList);
 
 };
+
 function createTask() {
     let isToDo = document.createElement("div");
     let isToDoText = document.createElement("div");
