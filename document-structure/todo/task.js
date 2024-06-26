@@ -23,7 +23,6 @@ function todoLocalizator() {
     for (const elem of tasksList.children) {
         cachedTasks.push(elem.getElementsByClassName("task__title")[0].textContent);
     }
-    console.log(cachedTasks);
     let serialTasksList = JSON.stringify(cachedTasks);
     localStorage.setItem("notesList", serialTasksList);
 

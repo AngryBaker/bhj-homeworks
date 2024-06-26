@@ -1,6 +1,7 @@
 let products = document.getElementsByClassName("products")[0];
 let cart = document.getElementsByClassName("cart__products")[0];
-let productCartProducts = cart.children;
+let productCartProducts = Array.from(cart.getElementsByClassName("cart__product"));
+
 
 function productCounter(e){
     if(e.target.classList.contains("product__quantity-control_dec")) {
@@ -27,31 +28,25 @@ function adderNewProduct(cardId, productValue, imgSrc){
    </div>`;
 };
 
-function productCheker(cardId){
-    for (let elem of productCartProducts) {
-       if (elem.dataset.id === cardId) {
-        console.log("ura-pusto");
-        return true;
-        
-       }
-    }
-};
 
 function addToCart(e){
     if(e.target.classList.contains("product__add")) {
         let cardId = e.target.closest(".product").dataset.id;
         let productValue = e.target.closest(".product").getElementsByClassName("product__quantity-value")[0].textContent;
         let imgSrc = e.target.closest(".product").getElementsByClassName("product__image")[0].getAttribute("src");
-        console.log(cardId, productValue, imgSrc);
-        if (productCheker(cardId)){
-            for (let elem of productCartProducts) {
-                if (elem.dataset.id === cardId) {
-                  let cartCounter = elem.getElementsByClassName("cart__product-count")[0];  
-                  cartCounter.textContent = +cartCounter.textContent + (+productValue);
-                }
+        productCartProducts = Array.from(cart.getElementsByClassName("cart__product"));
+        const productInCart = productCartProducts.find((elem) => {
+            if (elem.dataset.id === cardId) {
+                return elem;
             }
+        });
+        
+        if (productInCart){
+            const prdctCount = productInCart.getElementsByClassName("cart__product-count")[0];
+            prdctCount.textContent = +prdctCount.textContent +(+productValue);
         } else {
             adderNewProduct(cardId, productValue, imgSrc);
+            productCartProducts = Array.from(cart.getElementsByClassName("cart__product"));
         }
         
     };
