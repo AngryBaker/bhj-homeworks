@@ -35,11 +35,7 @@ function addToCart(e){
         let productValue = e.target.closest(".product").getElementsByClassName("product__quantity-value")[0].textContent;
         let imgSrc = e.target.closest(".product").getElementsByClassName("product__image")[0].getAttribute("src");
         productCartProducts = Array.from(cart.getElementsByClassName("cart__product"));
-        const productInCart = productCartProducts.find((elem) => {
-            if (elem.dataset.id === cardId) {
-                return elem;
-            }
-        });
+        const productInCart = productCartProducts.find( elem => elem.dataset.id === cardId);
         
         if (productInCart){
             const prdctCount = productInCart.getElementsByClassName("cart__product-count")[0];

@@ -7,7 +7,6 @@ if (returnTasksList){
 };
 
 function todoRestorer() {
-    let cachedTasks = [];
     for (const elem of returnTasksList) {
         createTask(elem);
     }
