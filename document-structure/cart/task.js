@@ -43,7 +43,7 @@ function addToCart(e){
         
         if (productInCart){
             const prdctCount = productInCart.getElementsByClassName("cart__product-count")[0];
-            prdctCount.textContent = +prdctCount.textContent +(+productValue);
+            prdctCount.textContent = +prdctCount.textContent +(+productValue);   
         } else {
             adderNewProduct(cardId, productValue, imgSrc);
             productCartProducts = Array.from(cart.getElementsByClassName("cart__product"));
