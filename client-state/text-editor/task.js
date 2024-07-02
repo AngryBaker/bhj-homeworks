@@ -3,6 +3,6 @@ if (localStorage.editorValue) {
     editor.value = localStorage.editorValue;
 };
 
-editor.addEventListener("change", () => {
+editor.addEventListener("keyup", () => {
   localStorage.editorValue = editor.value;
 })
