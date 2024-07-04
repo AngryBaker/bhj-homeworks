@@ -14,19 +14,16 @@ function formSender(e) {
     const authFormData = new FormData(form);
     const authXhr = new XMLHttpRequest();
     authXhr.open("POST", "https://students.netoservices.ru/nestjs-backend/auth");
+    authXhr.responseType = "json";
     authXhr.onload = function() {
-        if (authXhr.status != 201) {
-          alert(`Ошибка ${authXhr.status}: ${authXhr.statusText}`); 
-        } else { 
-            result = JSON.parse(authXhr.response);
-          if (!result.success){
-            alert("Неверный логин/пароль")
-          } else {
-            welcomer(result.user_id);
-            localStorage.user = result.user_id;
-          }  
-        }
-      };
+      result = authXhr.response;
+      if (!result.success){
+      alert("Неверный логин/пароль")
+      } else {
+      welcomer(result.user_id);
+      localStorage.user = result.user_id;
+      }  
+    };
     authXhr.send(authFormData);
     e.preventDefault();
     form.reset();
